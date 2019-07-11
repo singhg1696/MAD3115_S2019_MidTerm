@@ -1,5 +1,5 @@
 //
-//  SplashViewController.swift
+//  LoginViewController.swift
 //  C0753140_MidTerm_MAD3115S2019
 //
 //  Created by Gurwinder on 2019-07-11.
@@ -8,18 +8,12 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        perform(#selector(self.gotoLogin), with: nil, afterDelay: 2)
 
         // Do any additional setup after loading the view.
-    }
-    
-    @objc func gotoLogin()
-    {
-        performSegue(withIdentifier: "showloginIF", sender: self)
     }
     
 
