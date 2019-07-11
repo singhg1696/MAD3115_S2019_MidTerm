@@ -16,6 +16,11 @@ class SplashViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @objc func gotoLogin()
+    {
+        performSegue(withIdentifier: "showloginIF", sender: self)
+    }
+    
 
     /*
     // MARK: - Navigation
