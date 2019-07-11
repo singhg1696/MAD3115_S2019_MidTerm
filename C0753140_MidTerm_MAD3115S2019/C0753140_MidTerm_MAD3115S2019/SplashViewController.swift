@@ -12,6 +12,7 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        perform(#selector(self.gotoLogin), with: nil, afterDelay: 5)
 
         // Do any additional setup after loading the view.
     }
