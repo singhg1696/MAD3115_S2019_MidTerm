@@ -74,8 +74,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xKY-4V-0RP"/>
                     </view>
+                    <navigationItem key="navigationItem" id="N9G-8O-Z12"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxQ-yX-xQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1624.6376811594205" y="20.758928571428569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EjI-VM-A6m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k3F-xV-zrg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hn6-lz-Fnm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UWb-IN-aG7" kind="relationship" relationship="rootViewController" id="hZt-BQ-RlO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bQg-hP-8Yt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="714.49275362318849" y="20.758928571428569"/>
         </scene>
