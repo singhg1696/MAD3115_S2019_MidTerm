@@ -21,7 +21,7 @@ class Mobile: Bill{
         self.mobileNo = mobileNo
         self.minuteUsed = minuteUsed
         self.netUsed = netUsed
-        super.init(billId: billId, billDate: billDate, billType: billType, billAmount: billAmount)
+        super.init(Id: billId, billDate: billDate, billType: billType, totalBillAmount: billAmount)
     }
     
     

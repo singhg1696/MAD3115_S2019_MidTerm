@@ -10,37 +10,19 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    var count = 0
     @IBOutlet weak var switchRememberMe: UISwitch!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtID: UITextField!
-    var userList = [String:String]()
-
+    var UsersDict = [UsersStruct]()
+    
+    // getting user defaults reference
+    let userDefault = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    func readFromUsers() {
-        if let bundelPath = Bundle.main.path(forResource: "Users", ofType: "plist") {
-            let dictionary = NSMutableDictionary(contentsOfFile: bundelPath)
-            
-            userList = (dictionary!["Users"] as! NSDictionary) as! [String : String]
-            
-        }
-    }
     
-    private func getRememberMeValues() {
-        let userDefault = UserDefaults.standard
-        if let email = userDefault.string(forKey: "userEmail") {
-            txtID.text = email
-            if let pwd = userDefault.string(forKey: "userPassword") {
-                txtPassword.text = pwd
-            }
-        }
-    }
-    
- 
-
     @IBAction func btnLoginPressed(_ sender: UIBarButtonItem)
     {
         self.checkLogin()
@@ -48,35 +30,88 @@ class ViewController: UIViewController
     
     func checkLogin()
     {
-        for (k,v) in userList
-        {
-            if txtID.text == k && txtPassword.text == v
-            {
-                let userDefault = UserDefaults.standard
-                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-                let  userVC = storyBoard.instantiateViewController(withIdentifier: "BillListIdentifier") as! BillListTableViewController
-                self.present(userVC, animated: true, completion: nil)
+        if let email = txtID.text{
+            if !email.isEmpty{
                 
-                if switchRememberMe.isOn
-                {
-                    userDefault.setValue(txtID.text, forKey: "userEmail")
-                    userDefault.set(txtPassword.text, forKey: "userPassword")
+                if email.isValidEmail(){
+                    if let password = txtPassword.text{
+                        if !password.isEmpty{
+                            if password.sizeCheck(){
+                                
+                                if  checkEmailPassword(email: email, password: password) {
+                                    setRememberMe()
+                                    
+                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                    let dashboardVC = storyboard.instantiateViewController(withIdentifier: "customerListVC") as! BillListTableViewController
+                                    
+                                    self.navigationController?.pushViewController(dashboardVC, animated: true)
+                                    
+                                    
+                                }else{
+                                    showAlerBox(msg: "You have enter wrong credentials")
+                                }
+                                
+                            }else{
+                                showAlerBox(msg: "Invalid password size")
+                            }
+                            
+                        }else{
+                            showAlerBox(msg: "Please enter password")
+                        }
+                    }
                 }
-                else
-                {
-                    userDefault.removeObject(forKey: "userEmail")
-                    userDefault.removeObject(forKey: "userPassword")
+                else{
+                    showAlerBox(msg: "Please enter valid email")
                 }
-                count = count + 1
+            }else{
+                showAlerBox(msg: "Please enter useremail")
             }
         }
-        if count == 0
-        {
-            let alert = UIAlertController(title: "Error", message: "Invalid Username or Password", preferredStyle: .alert)
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            alert.addAction(okButton)
-            self.present(alert, animated: true)
+    }
+    
+    func checkEmailPassword(email : String , password : String) -> Bool{
+        
+        for everyCustomer in UsersDict{
+            if (everyCustomer.email == email && everyCustomer.password == password) {
+                return true
+            }
         }
+        return false
+    }
+    
+    func setRememberMe()  {
+        if switchRememberMe.isOn {
+            userDefault.set(self.txtID.text, forKey: "email")
+            userDefault.set(self.txtPassword.text, forKey: "password")
+        }else{
+            userDefault.set("", forKey: "email")
+            userDefault.set("", forKey: "password")
+        }
+    }
+    
+    func getRememberMe()
+    {
+        let userDefault = UserDefaults.standard
+        
+        if let email = userDefault.string(forKey: "email")
+        {
+            txtID.text = email
+            
+            if let password = userDefault.string(forKey: "password")
+            {
+                txtPassword.text = password
+                switchRememberMe.setOn(true, animated: false)
+            }
+        }
+    }
+    
+    
+    func showAlerBox(msg : String)  {
+        let alertController = UIAlertController(title: "CustomerBillApp", message:
+            msg, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 
     @IBAction func unWindLogoutFromAnyScreen(storyboardSegue: UIStoryboardSegue)

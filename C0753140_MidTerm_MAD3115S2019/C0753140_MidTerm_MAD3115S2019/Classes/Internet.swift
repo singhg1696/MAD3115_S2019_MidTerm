@@ -15,7 +15,7 @@ class Internet: Bill{
     init(billId: Int, billDate: Date, billType: String, billAmount: Float,providerName: String,internetUsed: Float) {
         self.providerName = providerName
         self.internetUsed = internetUsed
-        super.init(billId: billId, billDate: billDate, billType: billType, billAmount: billAmount)
+        super.init(Id: billId, billDate: billDate, billType: billType, totalBillAmount: billAmount)
     }
     
    
