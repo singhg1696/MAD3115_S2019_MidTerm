@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtID: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.readInformationPlist()
         // Do any additional setup after loading the view.
     }
     
@@ -74,12 +73,17 @@ class ViewController: UIViewController {
         txtID.text = ""
     }
     
-    
     func readInformationPlist() {
-        if let bundlePath = Bundle.main.path(forResource: "Users", ofType: "plist") {
+        if let bundlePath = Bundle.main.path(forResource: "Employee", ofType: "plist") {
             let dictionary = NSMutableDictionary(contentsOfFile: bundlePath)
             
+            //print(dictionary!.description)
+            
+           
         }
     }
+    
+    
+   
 }
 
