@@ -8,28 +8,30 @@
 
 import Foundation
 
-class Bill{
+enum billTypes {
+    case Mobile, Internet, Hydro, None
+}
+
+class Bill
+{
+    var Id: Int
+    var billDate: Date
+    var billType: billTypes
+    var totalBillAmount: Float
     
-    let billId: Int?
-    var billDate: Date?
-    var billType: String?
-    var billAmount: Float?
-    
-    init(billId: Int,billDate: Date,billType: String,billAmount: Float) {
-        self.billId = billId
-        self.billDate = billDate
-        self.billType = billType
-        self.billAmount = billAmount
+    init()
+    {
+        self.Id = Int()
+        self.billDate = Date()
+        self.billType = billTypes.None
+        self.totalBillAmount = Float()
     }
     
-    func display() {
-        print("----Bill Information----")
-        print("********************************")
-        print("Bill Id: ",billId!)
-        print("Bill Date: ",billDate!)
-        print("Bill Type: ",billType!)
-        print("Bill Amount: ",billAmount!)
-        
-        
+    init(Id: Int, billDate: Date, billType: billTypes, totalBillAmount: Float)
+    {
+        self.Id = Id
+        self.billDate = billDate
+        self.billType = billType
+        self.totalBillAmount = totalBillAmount
     }
 }

@@ -9,61 +9,42 @@
 import Foundation
 
 
-class Customer: IDisplay{
+class Customer
+{
+    static var activeCustomer = Customer()
+    var customerId : String
+    var firstName : String
+    var lastName: String
     
-    let customerId: Int?
-    var firstName: String?
-    var lastName: String?
-    var fullName: String{
-        return "\(firstName!) \(lastName!)"
+    var fullName: String // computed variable
+    {
+        return "\(self.firstName) \(self.lastName)"
     }
-    let email: String?
-    var arrayBills: [Bill]?
-    var totalBill: Float{
-        var Total:Float = 0.0
-        for bills in arrayBills! {
-            Total = Total + bills.billAmount!
+    var email: String
+    
+    var billDictionary = [Int:Bill]()
+    
+    var TotalAmountToPay: Float // computed variable
+    {
+        var TotalAmount: Float = 0.0
+        
+        for bill in billDictionary
+        {
+            TotalAmount = TotalAmount + bill.value.totalBillAmount
         }
-        return Total
+        return TotalAmount
     }
-    
-    init(customerId: Int,firstName: String,lastName: String,email: String,arrayBills: [Bill]) {
+    init(){
+        self.customerId = String()
+        self.firstName = String()
+        self.lastName = String()
+        self.email = String()
+    }
+    init(customerId: String, firstName: String, lastName: String, email: String)
+    {
         self.customerId = customerId
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
-        self.arrayBills = arrayBills
-    }
-    
-    var temp: Int = 0
-    func display() {
-        print("Customer Id: ",customerId!)
-        print("Full Name: ",fullName)
-        print("Email: ",email!)
-        print("----Bill Information----")
-        
-        if arrayBills!.count == 0 {
-            print("~~~NOTE : This Customer has no bills")
-            temp = temp + 1
-        }else
-        {
-            for bill in self.arrayBills! {
-                bill.display()
-            }
-        }
-        if(temp == 0){
-            print("********************************")
-            print("Total Amount to Pay: ",totalBill.dollar())
-            print("********************************")
-        }
-        print("")
-        print("")
-    }
-    
-    func display(customerId: Int) {
-        print("")
-        print("Customer Id: ",customerId)
-        print("Full Name: ",fullName)
-        print("Email: ",email!)
     }
 }

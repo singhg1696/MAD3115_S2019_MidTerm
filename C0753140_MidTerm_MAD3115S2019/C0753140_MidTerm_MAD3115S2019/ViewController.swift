@@ -25,7 +25,6 @@ class ViewController: UIViewController
             let dictionary = NSMutableDictionary(contentsOfFile: bundelPath)
             
             userList = (dictionary!["Users"] as! NSDictionary) as! [String : String]
-            print(userList["admin1@gmail.com"]!)
             
         }
     }
@@ -40,8 +39,17 @@ class ViewController: UIViewController
         }
     }
     
-    func checkLogin() {
-        for (k,v) in userList {
+ 
+
+    @IBAction func btnLoginPressed(_ sender: UIBarButtonItem)
+    {
+        self.checkLogin()
+    }
+    
+    func checkLogin()
+    {
+        for (k,v) in userList
+        {
             if txtID.text == k && txtPassword.text == v
             {
                 let userDefault = UserDefaults.standard
@@ -49,27 +57,26 @@ class ViewController: UIViewController
                 let  userVC = storyBoard.instantiateViewController(withIdentifier: "BillListIdentifier") as! BillListTableViewController
                 self.present(userVC, animated: true, completion: nil)
                 
-                if switchRememberMe.isOn{
+                if switchRememberMe.isOn
+                {
                     userDefault.setValue(txtID.text, forKey: "userEmail")
                     userDefault.set(txtPassword.text, forKey: "userPassword")
-                }else {
+                }
+                else
+                {
                     userDefault.removeObject(forKey: "userEmail")
                     userDefault.removeObject(forKey: "userPassword")
                 }
                 count = count + 1
             }
         }
-        if count == 0 {
+        if count == 0
+        {
             let alert = UIAlertController(title: "Error", message: "Invalid Username or Password", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true)
         }
-    }
-
-    @IBAction func btnLoginPressed(_ sender: UIBarButtonItem)
-    {
-        self.checkLogin()
     }
 
     @IBAction func unWindLogoutFromAnyScreen(storyboardSegue: UIStoryboardSegue)
