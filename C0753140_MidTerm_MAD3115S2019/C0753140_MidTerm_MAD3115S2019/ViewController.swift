@@ -17,6 +17,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    private func getRememberMeValues()
+    {
+        let userDefault = UserDefaults.standard
+        
+        if let email = userDefault.string(forKey: "userEmail")
+        {
+            txtID.text = email
+            
+            if let pwd = userDefault.string(forKey: "userPassword")
+            {
+                txtPassword.text = pwd
+            }
+        }
+    }
 
     @IBAction func btnLoginPressed(_ sender: UIBarButtonItem) {
         if self.txtID.text == "admin@gmail.com" && self.txtPassword.text == "s3cr3t"
