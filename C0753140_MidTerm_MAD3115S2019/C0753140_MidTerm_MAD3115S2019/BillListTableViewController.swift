@@ -10,7 +10,7 @@ import UIKit
 
 class BillListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
-    var customers = [Customer]()
+    var customers = [CustomersStruct]()
     
     @IBOutlet weak var tblViewCustomers: UITableView!
     override func viewDidLoad() {

@@ -10,10 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+        var customerDict = [CustomersStruct]()
     @IBOutlet weak var switchRememberMe: UISwitch!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtID: UITextField!
     override func viewDidLoad() {
+        switchRememberMe.isOn = false
         super.viewDidLoad()
         getRememberMeValues()
         // Do any additional setup after loading the view.
@@ -45,35 +47,61 @@ class ViewController: UIViewController {
                 {
                     for user in users
                     {
-                        if ( (self.txtID.text == (user["email"] as! String)) && (self.txtPassword.text == (user["password"] as! String)) )
+                        if let email = self.txtID.text
                         {
-                            let userDefault = UserDefaults.standard
-                            let sb = UIStoryboard(name: "Main", bundle: nil)
-                            let  userVC = sb.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
-                            //             userVC.eMailId = txtTextField.text
-                            self.present(userVC, animated: true, completion: nil)
-                            if switchRememberMe.isOn
+                            if !email.isEmpty
                             {
-                                
-                                userDefault.setValue(txtID.text, forKey: "userEmail")
-                                userDefault.set(txtPassword.text, forKey: "userPassword")
-                            }
-                            else
-                            {
-                                userDefault.removeObject(forKey: "userEmail")
-                                userDefault.removeObject(forKey: "userPassword")
+                                if email.isValidEmail()
+                                {
+                                    if let password = self.txtPassword.text
+                                    {
+                                        if !password.isEmpty
+                                        {
+                                            if password.sizeCheck()
+                                            {
+                                                    if  checkEmailPassword(email: email, password: password)
+                                                    {
+
+                                                
+                                            
+                                                        if ( (email == (user["email"] as! String)) && (password == (user["password"] as! String)) )
+                                                        {
+                                                            let userDefault = UserDefaults.standard
+                                                            let sb = UIStoryboard(name: "Main", bundle: nil)
+                                                            let  userVC = sb.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
+                                                            //             userVC.eMailId = txtTextField.text
+                                                            self.present(userVC, animated: true, completion: nil)
+                                                            if switchRememberMe.isOn
+                                                            {
+                                                                
+                                                                userDefault.setValue(txtID.text, forKey: "userEmail")
+                                                                userDefault.set(txtPassword.text, forKey: "userPassword")
+                                                            }
+                                                            else
+                                                            {
+                                                                userDefault.removeObject(forKey: "userEmail")
+                                                                userDefault.removeObject(forKey: "userPassword")
+                                                            }
+                                                        }
+                                                    }
+                                                        else
+                                                        {
+                                                            let alert = UIAlertController(title: "Error", message: "Invalid UserId or Password", preferredStyle: .alert)
+                                                            
+                                                            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                                                            
+                                                            alert.addAction(okButton)
+                                                            
+                                                            self.present(alert, animated: true)
+                                                        }
+                                                
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
-                        else
-                        {
-                            let alert = UIAlertController(title: "Error", message: "Invalid UserId or Password", preferredStyle: .alert)
-                            
-                            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                            
-                            alert.addAction(okButton)
-                            
-                            self.present(alert, animated: true)
-                        }
+                        
                     }
                 }
             }
@@ -92,6 +120,16 @@ class ViewController: UIViewController {
              txtID.text = ""
         }
     
+    }
+    
+    func checkEmailPassword(email : String , password : String) -> Bool{
+        
+        for eachCustomer in customerDict{
+            if (eachCustomer.email == email && eachCustomer.password == password) {
+                return true
+            }
+        }
+        return false
     }
     
 //    func readInformationPlist() {
