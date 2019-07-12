@@ -19,7 +19,7 @@ class BillListTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let b1: Mobile = Mobile(billId: 1, billDate: Date(), billType: billTypes.Mobile, billAmount: 74, mobileManufacturer: "Samsung S10", planName: "Talk + Data", mobileNo: "+12345678901", netUsed: 23, minuteUsed: 34)
+        let b1: Mobile = Mobile(billId: 1, billDate: Date(), billType: billTypes.Mobile, billAmount: 74, mobileManufacturer: "Samsung S10", planName: "Rogers", mobileNo: "+12345678901", netUsed: 23, minuteUsed: 34)
         
         
         let b2: Internet = Internet(billId: 1, billDate: Date(), billType: billTypes.Internet, billAmount: 23.09, providerName: "Bell", internetUsed: 34)
