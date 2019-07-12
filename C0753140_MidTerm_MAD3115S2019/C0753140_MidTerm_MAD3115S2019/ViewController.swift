@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtID: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.readInformationPlist()
         // Do any additional setup after loading the view.
     }
     
@@ -34,6 +35,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnLoginPressed(_ sender: UIBarButtonItem) {
+        
         if self.txtID.text == "admin@gmail.com" && self.txtPassword.text == "s3cr3t"
         {
             let userDefault = UserDefaults.standard
@@ -70,6 +72,14 @@ class ViewController: UIViewController {
         
         txtPassword.text = ""
         txtID.text = ""
+    }
+    
+    
+    func readInformationPlist() {
+        if let bundlePath = Bundle.main.path(forResource: "Users", ofType: "plist") {
+            let dictionary = NSMutableDictionary(contentsOfFile: bundlePath)
+            
+        }
     }
 }
 
