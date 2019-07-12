@@ -17,6 +17,8 @@ class ShowBillDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tbl_billdetails.delegate = self
+        self.tbl_billdetails.dataSource = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +27,7 @@ class ShowBillDetailsViewController: UIViewController {
         self.lblCustomerName.text = Customer.activeCustomer.fullName
         self.lblTotalBill.text = String(Customer.activeCustomer.TotalAmountToPay)
     }
+    
     
 
     /*
@@ -37,4 +40,20 @@ class ShowBillDetailsViewController: UIViewController {
     }
     */
 
+}
+
+extension ShowBillDetailsViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Customer.activeCustomer.billDictionary.count
+
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "idBill")  as! UITableViewCell
+        
+        let currentbill = Customer.activeCustomer.billDictionary[indexPath.row + 1]
+        var furtherDetails = ""
+    }
+    
+    
 }
