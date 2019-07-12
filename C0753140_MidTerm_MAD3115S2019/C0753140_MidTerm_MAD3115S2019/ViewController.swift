@@ -19,6 +19,8 @@ class ViewController: UIViewController
     let userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
+        switchRememberMe.isOn = false
+        getRememberMe()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -33,23 +35,32 @@ class ViewController: UIViewController
         if let email = txtID.text{
             if !email.isEmpty{
                 
-                if email.isValidEmail(){
-                    if let password = txtPassword.text{
+                if email.isValidEmail()
+                {
+                    if let password = txtPassword.text
+                    {
                         if !password.isEmpty{
                             if password.sizeCheck(){
                                 
-                                if  checkEmailPassword(email: email, password: password) {
-                                    setRememberMe()
+                             //   if  checkEmailPassword(email: email, password: password)
+                               // {
+                                    if switchRememberMe.isOn {
+                                        userDefault.set(self.txtID.text, forKey: "email")
+                                        userDefault.set(self.txtPassword.text, forKey: "password")
+                                    }else{
+                                        userDefault.set("", forKey: "email")
+                                        userDefault.set("", forKey: "password")
+                                    }
                                     
                                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                                    let dashboardVC = storyboard.instantiateViewController(withIdentifier: "customerListVC") as! BillListTableViewController
+                                    let dashboardVC = storyboard.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
+                                    self.present(dashboardVC, animated: true, completion: nil)                                   
                                     
-                                    self.navigationController?.pushViewController(dashboardVC, animated: true)
                                     
-                                    
-                                }else{
-                                    showAlerBox(msg: "You have enter wrong credentials")
-                                }
+                               // }
+//                                else{
+//                                    showAlerBox(msg: "You have enter wrong credentials")
+//                                }
                                 
                             }else{
                                 showAlerBox(msg: "Invalid password size")
@@ -100,15 +111,7 @@ class ViewController: UIViewController
         return false
     }
     
-    func setRememberMe()  {
-        if switchRememberMe.isOn {
-            userDefault.set(self.txtID.text, forKey: "email")
-            userDefault.set(self.txtPassword.text, forKey: "password")
-        }else{
-            userDefault.set("", forKey: "email")
-            userDefault.set("", forKey: "password")
-        }
-    }
+    
     
     func getRememberMe()
     {

@@ -117,10 +117,11 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem id="a3Y-ON-7rl">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="qTb-AQ-yDa">
+                                    <navigationItem title="Customers Name" id="a3Y-ON-7rl">
+                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="qTb-AQ-yDa">
                                             <connections>
-                                                <segue destination="wFb-lM-Uzb" kind="unwind" unwindAction="unWindLogoutFromAnyScreenWithStoryboardSegue:" id="Cka-d1-xJJ"/>
+                                                <action selector="btnLogout:" destination="vvu-Ve-QBs" id="x2A-0N-qZ9"/>
+                                                <segue destination="wFb-lM-Uzb" kind="unwind" unwindAction="unWindLogoutFromAnyScreenWithStoryboardSegue:" id="bbJ-SS-geZ"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -138,8 +139,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROS-iC-bi8">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROS-iC-bi8">
+                                                    <rect key="frame" x="20" y="11" width="0.0" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -162,12 +163,73 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tblViewCustomers" destination="Hsf-qU-wke" id="Sbp-4n-J9U"/>
+                        <segue destination="nvI-Mx-mAD" kind="show" identifier="GoToNextScreen" id="heE-wH-7bJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPD-2X-G0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wFb-lM-Uzb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2453.6231884057975" y="20.758928571428569"/>
+        </scene>
+        <!--Show Bill Details View Controller-->
+        <scene sceneID="6D5-Ex-9vP">
+            <objects>
+                <viewController id="nvI-Mx-mAD" customClass="ShowBillDetailsViewController" customModule="C0753140_MidTerm_MAD3115S2019" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="77P-Ap-glm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smv-4r-sn6">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Bill Details" id="v8I-vr-Eil">
+                                        <barButtonItem key="rightBarButtonItem" title="Add Bill" id="em7-dA-7cH"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLj-xv-bX6">
+                                <rect key="frame" x="50" y="161" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCC-0b-Kqq">
+                                <rect key="frame" x="48" y="195" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Customer Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdT-2J-OO1">
+                                <rect key="frame" x="50" y="231" width="121" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13H-sE-H6x">
+                                <rect key="frame" x="52" y="271" width="64" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8dL-fv-aPh"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblCustomerEmail" destination="SdT-2J-OO1" id="KyM-TJ-TwM"/>
+                        <outlet property="lblCustomerId" destination="jLj-xv-bX6" id="fao-w9-s9B"/>
+                        <outlet property="lblCustomerName" destination="UCC-0b-Kqq" id="lJh-8X-ZWK"/>
+                        <outlet property="lblTotalBill" destination="13H-sE-H6x" id="UT5-aY-mh4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QfA-ap-6In" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3263.7681159420295" y="19.419642857142858"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EjI-VM-A6m">

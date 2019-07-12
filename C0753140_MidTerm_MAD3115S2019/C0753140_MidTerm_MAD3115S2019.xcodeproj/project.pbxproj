@@ -25,6 +25,7 @@
 		DDA6FED822D843D500E88A9A /* CustomerTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FED722D843D500E88A9A /* CustomerTableCellTableViewCell.swift */; };
 		DDA6FEDB22D9066F00E88A9A /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FEDA22D9066F00E88A9A /* utilities.swift */; };
 		DDA6FEDD22D9214200E88A9A /* studentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FEDC22D9214200E88A9A /* studentData.swift */; };
+		DDA6FEDF22D9401200E88A9A /* ShowBillDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FEDE22D9401200E88A9A /* ShowBillDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		DDA6FED722D843D500E88A9A /* CustomerTableCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		DDA6FEDA22D9066F00E88A9A /* utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
 		DDA6FEDC22D9214200E88A9A /* studentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = studentData.swift; sourceTree = "<group>"; };
+		DDA6FEDE22D9401200E88A9A /* ShowBillDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowBillDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				DDA6FEC522D8154300E88A9A /* Users.plist */,
 				DDA6FED722D843D500E88A9A /* CustomerTableCellTableViewCell.swift */,
 				DDA6FEDC22D9214200E88A9A /* studentData.swift */,
+				DDA6FEDE22D9401200E88A9A /* ShowBillDetailsViewController.swift */,
 			);
 			path = C0753140_MidTerm_MAD3115S2019;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				DDA6FEDD22D9214200E88A9A /* studentData.swift in Sources */,
 				DDA6FECB22D8393700E88A9A /* Hydro.swift in Sources */,
 				DDA6FE8E22D7F49E00E88A9A /* AppDelegate.swift in Sources */,
+				DDA6FEDF22D9401200E88A9A /* ShowBillDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
