@@ -69,6 +69,27 @@ class ViewController: UIViewController
         }
     }
     
+    func readCustomersPlistFile(){
+        
+        let plist = Bundle.main.path(forResource: "UserInfo", ofType: "plist")
+        
+        if let dict = NSMutableDictionary(contentsOfFile: plist!){
+            if let Customers = dict["Users"] as? [[String:Any]]
+            {
+                for customer in Customers {
+                    let id = customer["userID"] as! Int
+                    let firstName = customer["userName"] as! String
+                    
+                    let email = customer["email"] as! String
+                    let password = customer["password"] as! String
+                    
+                    self.UsersDict.append(UsersStruct(userID: id, userName: firstName, email: email, password: password))
+                }
+            }
+        }
+        
+    }
+    
     func checkEmailPassword(email : String , password : String) -> Bool{
         
         for everyCustomer in UsersDict{
