@@ -11,11 +11,11 @@ import Foundation
 class Mobile: Bill{
     let mobileManufacturer: String?
     var planName: String?
-    var mobileNo: Int64?
+    var mobileNo: String
     var netUsed: Float?
     var minuteUsed: Float?
     
-    init(billId: Int, billDate: Date, billType: String, billAmount: Float,mobileManufacturer: String,planName: String,mobileNo: Int64,netUsed: Float,minuteUsed: Float) {
+    init(billId: Int, billDate: Date, billType: billTypes, billAmount: Float,mobileManufacturer: String,planName: String,mobileNo: String,netUsed: Float,minuteUsed: Float) {
         self.mobileManufacturer = mobileManufacturer
         self.planName = planName
         self.mobileNo = mobileNo

@@ -11,7 +11,7 @@ class Hydro: Bill{
     let agencyName: String?
     var unitsConsumed: Float?
     
-    init(billId: Int, billDate: Date, billType: String, billAmount: Float,agencyName: String,unitsConsumed: Float) {
+    init(billId: Int, billDate: Date, billType: billTypes, billAmount: Float,agencyName: String,unitsConsumed: Float) {
         self.agencyName = agencyName
         self.unitsConsumed = unitsConsumed
         super.init(Id: billId, billDate: billDate, billType: billType, totalBillAmount: billAmount)
