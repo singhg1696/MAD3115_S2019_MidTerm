@@ -10,35 +10,36 @@ import UIKit
 
 class BillListTableViewController: UIViewController {
 
+    var customers = [Customer]()
+    
     @IBOutlet weak var tblViewCustomers: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tblViewCustomers.delegate = self
+        self.tblViewCustomers.dataSource = self
+        
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
-//extension BillListTableViewController : UITableViewDataSource, UITableViewDelegate{
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//    
-//    
-//}
+extension BillListTableViewController : UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.customers.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customerCell") as! StudentTableViewCell
+        let customer = self.customers[indexPath.row]
+        
+        cell.
+        cell.lblStudentId.text = "Student ID : \(stud.studentId)"
+        cell.lblStudentName.text = "Name : \(stud.studentName)"
+        cell.lblCity.text = "City : \(stud.city)"
+        
+        return cell
+    }
+
+
+}
 
