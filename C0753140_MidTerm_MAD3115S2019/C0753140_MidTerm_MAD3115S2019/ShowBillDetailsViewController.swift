@@ -19,6 +19,12 @@ class ShowBillDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.lblCustomerId.text = Customer.activeCustomer.customerId
+        self.lblCustomerEmail.text = Customer.activeCustomer.email
+        self.lblCustomerName.text = Customer.activeCustomer.fullName
+        self.lblTotalBill.text = String(Customer.activeCustomer.TotalAmountToPay)
+    }
     
 
     /*
