@@ -37,6 +37,10 @@ class ViewController: UIViewController {
         if self.txtID.text == "admin@gmail.com" && self.txtPassword.text == "s3cr3t"
         {
             let userDefault = UserDefaults.standard
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let  userVC = sb.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
+            //             userVC.eMailId = txtTextField.text
+            self.present(userVC, animated: true, completion: nil)
             if switchRememberMe.isOn
             {
                 
@@ -60,6 +64,12 @@ class ViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-    
+    @IBAction func unWindLogoutFromAnyScreen(storyboardSegue: UIStoryboardSegue)
+    {
+        let s = storyboardSegue.source as! BillListTableViewController
+        
+        txtPassword.text = ""
+        txtID.text = ""
+    }
 }
 
