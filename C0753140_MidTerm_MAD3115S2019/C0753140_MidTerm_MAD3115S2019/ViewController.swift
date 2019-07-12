@@ -8,143 +8,75 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-        var customerDict = [CustomersStruct]()
+class ViewController: UIViewController
+{
+    var count = 0
     @IBOutlet weak var switchRememberMe: UISwitch!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtID: UITextField!
+    var userList = [String:String]()
+
     override func viewDidLoad() {
-        switchRememberMe.isOn = false
         super.viewDidLoad()
-        getRememberMeValues()
         // Do any additional setup after loading the view.
     }
-    
-    private func getRememberMeValues()
-    {
-        let userDefault = UserDefaults.standard
-        
-        if let email = userDefault.string(forKey: "userEmail")
-        {
-            txtID.text = email
+    func readFromUsers() {
+        if let bundelPath = Bundle.main.path(forResource: "Users", ofType: "plist") {
+            let dictionary = NSMutableDictionary(contentsOfFile: bundelPath)
             
-            if let pwd = userDefault.string(forKey: "userPassword")
-            {
+            userList = (dictionary!["Users"] as! NSDictionary) as! [String : String]
+            print(userList["admin1@gmail.com"]!)
+            
+        }
+    }
+    
+    private func getRememberMeValues() {
+        let userDefault = UserDefaults.standard
+        if let email = userDefault.string(forKey: "userEmail") {
+            txtID.text = email
+            if let pwd = userDefault.string(forKey: "userPassword") {
                 txtPassword.text = pwd
             }
+        }
+    }
+    
+    func checkLogin() {
+        for (k,v) in userList {
+            if txtID.text == k && txtPassword.text == v
+            {
+                let userDefault = UserDefaults.standard
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let  userVC = storyBoard.instantiateViewController(withIdentifier: "BillListIdentifier") as! BillListTableViewController
+                self.present(userVC, animated: true, completion: nil)
+                
+                if switchRememberMe.isOn{
+                    userDefault.setValue(txtID.text, forKey: "userEmail")
+                    userDefault.set(txtPassword.text, forKey: "userPassword")
+                }else {
+                    userDefault.removeObject(forKey: "userEmail")
+                    userDefault.removeObject(forKey: "userPassword")
+                }
+                count = count + 1
+            }
+        }
+        if count == 0 {
+            let alert = UIAlertController(title: "Error", message: "Invalid Username or Password", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(okButton)
+            self.present(alert, animated: true)
         }
     }
 
     @IBAction func btnLoginPressed(_ sender: UIBarButtonItem)
     {
-        
-        if let plist = Bundle.main.path(forResource: "Users", ofType: "plist")
-        {
-            if let dict = NSDictionary(contentsOfFile: plist)
-            {
-                if let users = dict["Users"] as? [[String:Any]]
-                {
-                    for user in users
-                    {
-                        if let email = self.txtID.text
-                        {
-                            if !email.isEmpty
-                            {
-                                if email.isValidEmail()
-                                {
-                                    if let password = self.txtPassword.text
-                                    {
-                                        if !password.isEmpty
-                                        {
-                                            if password.sizeCheck()
-                                            {
-                                                    if  checkEmailPassword(email: email, password: password)
-                                                    {
-
-                                                
-                                            
-                                                        if ( (email == (user["email"] as! String)) && (password == (user["password"] as! String)) )
-                                                        {
-                                                            let userDefault = UserDefaults.standard
-                                                            let sb = UIStoryboard(name: "Main", bundle: nil)
-                                                            let  userVC = sb.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
-                                                            //             userVC.eMailId = txtTextField.text
-                                                            self.present(userVC, animated: true, completion: nil)
-                                                            if switchRememberMe.isOn
-                                                            {
-                                                                
-                                                                userDefault.setValue(txtID.text, forKey: "userEmail")
-                                                                userDefault.set(txtPassword.text, forKey: "userPassword")
-                                                            }
-                                                            else
-                                                            {
-                                                                userDefault.removeObject(forKey: "userEmail")
-                                                                userDefault.removeObject(forKey: "userPassword")
-                                                            }
-                                                        }
-                                                    }
-                                                        else
-                                                        {
-                                                            let alert = UIAlertController(title: "Error", message: "Invalid UserId or Password", preferredStyle: .alert)
-                                                            
-                                                            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                                                            
-                                                            alert.addAction(okButton)
-                                                            
-                                                            self.present(alert, animated: true)
-                                                        }
-                                                
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-        }
+        self.checkLogin()
     }
 
     @IBAction func unWindLogoutFromAnyScreen(storyboardSegue: UIStoryboardSegue)
     {
         _ = storyboardSegue.source as! BillListTableViewController
-        
-        if switchRememberMe.isOn{
-            
-        }
-        else{
-            txtPassword.text = ""
-             txtID.text = ""
-        }
-    
+        txtPassword.text = ""
+        txtID.text = ""
     }
-    
-    func checkEmailPassword(email : String , password : String) -> Bool{
-        
-        for eachCustomer in customerDict{
-            if (eachCustomer.email == email && eachCustomer.password == password) {
-                return true
-            }
-        }
-        return false
-    }
-    
-//    func readInformationPlist() {
-//        if let bundlePath = Bundle.main.path(forResource: "Employee", ofType: "plist") {
-//            _ = NSMutableDictionary(contentsOfFile: bundlePath)
-//
-//            //print(dictionary!.description)
-//
-//
-//        }
-//
-//
-//    }
-    
-    
-   
 }
 

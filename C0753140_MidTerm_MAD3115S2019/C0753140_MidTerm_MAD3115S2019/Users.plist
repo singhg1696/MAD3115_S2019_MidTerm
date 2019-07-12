@@ -2,38 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Users</key>
-    <array>
-        <dict>
-            <key>email</key>
-            <string>gurwinder@gmail.com</string>
-            <key>password</key>
-            <string>guri@123</string>
-        </dict>
-        <dict>
-            <key>email</key>
-            <string>udhay@gmail.com</string>
-            <key>password</key>
-            <string>udhay@123</string>
-        </dict>
-        <dict>
-            <key>email</key>
-            <string>ujjwal@gmail.com</string>
-            <key>password</key>
-            <string>ujwal@123</string>
-        </dict>
-        <dict>
-            <key>email</key>
-            <string>hargun@gmail.com</string>
-            <key>password</key>
-            <string>hargun@123</string>
-        </dict>
-        <dict>
-            <key>email</key>
-            <string>aman@gmail.com</string>
-            <key>password</key>
-            <string>aman@123</string>
-        </dict>
-    </array>
+    <key>Users</key>
+    <dict>
+        <key>gurwinder@gmail.com</key>
+        <string>123456</string>
+        <key>ujwal@gmail.com</key>
+        <string>123456</string>
+        <key>udhay@gmail.com</key>
+        <string>123456</string>
+        <key>aman@gmail.com</key>
+        <string>123456</string>
+        <key>hargun@gmail.com</key>
+        <string>123456</string>
+    </dict>
 </dict>
 </plist>

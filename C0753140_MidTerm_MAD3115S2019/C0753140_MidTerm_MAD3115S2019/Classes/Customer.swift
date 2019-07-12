@@ -8,30 +8,16 @@
 
 import Foundation
 
-class Customer{
+// Use structure only to read data
+struct CustomersStruct {
+    let customerID : Int
+    var customerFName : String
+    var customerLName : String
+    var email : String
+    var password : String
     
-    let customerId: Int?
-    var firstName: String?
-    var lastName: String?
-    var fullName: String{
-        return "\(firstName!) \(lastName!)"
-    }
-    let email: String?
-    var arrayBills: [Bill]?
-    var totalBill: Float{
-        var Total:Float = 0.0
-        for bills in arrayBills! {
-            Total = Total + bills.billAmount!
-        }
-        return Total
+    var fullName : String{
+        return "\(customerFName ) \(customerLName)"
     }
     
-    init(customerId: Int,firstName: String,lastName: String,email: String,arrayBills: [Bill]) {
-        self.customerId = customerId
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.arrayBills = arrayBills
-
-    }
 }
