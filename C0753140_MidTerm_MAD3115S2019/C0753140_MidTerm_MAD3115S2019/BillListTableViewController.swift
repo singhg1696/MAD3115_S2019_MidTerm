@@ -12,11 +12,16 @@ class BillListTableViewController: UIViewController, UITableViewDataSource, UITa
 {
 
 
+    var customerList = [UsersStruct]()
+    var customerArray = Array<Customer>()
     @IBOutlet weak var tblViewCustomers: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let b1: Mobile = Mobile(Id: 1, billDate: Date(), billType: billTypes.Mobile, totalBillAmount: 74.52, mobileManufacturer: "Samsung S10", planName: "Talk + Data", mobileNumber: "+12345678901", internetUsed: 23, minuteUsed: 34)
+      
+        
         self.tblViewCustomers.delegate = self
         self.tblViewCustomers.dataSource = self
         
@@ -24,7 +29,27 @@ class BillListTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
  
-    
+    func readCustomersPlistFile(){
+        
+        let plist = Bundle.main.path(forResource: "UserInfo", ofType: "plist")
+        
+        if let dict = NSMutableDictionary(contentsOfFile: plist!){
+            if let customers = dict["Users"] as? [[String:Any]]
+            {
+                for customer in customers {
+                    let id = customer["userID"] as! Int
+                    let firstName = customer["userName"] as! String
+                    
+                    let email = customer["email"] as! String
+                    let password = customer["password"] as! String
+                    
+                    self.customerList.append(UsersStruct(userID: id, userName: firstName, email: email, password: password))
+                }
+            }
+        }
+        
+        
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(100)
