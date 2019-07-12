@@ -32,5 +32,6 @@ class Customer{
         self.lastName = lastName
         self.email = email
         self.arrayBills = arrayBills
-}
+
+    }
 }

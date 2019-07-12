@@ -22,6 +22,7 @@
 		DDA6FECD22D8396A00E88A9A /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FECC22D8396A00E88A9A /* Bill.swift */; };
 		DDA6FECF22D8399D00E88A9A /* Internet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FECE22D8399D00E88A9A /* Internet.swift */; };
 		DDA6FED122D839D100E88A9A /* Mobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FED022D839D100E88A9A /* Mobile.swift */; };
+		DDA6FED822D843D500E88A9A /* CustomerTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FED722D843D500E88A9A /* CustomerTableCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		DDA6FECC22D8396A00E88A9A /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		DDA6FECE22D8399D00E88A9A /* Internet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Internet.swift; sourceTree = "<group>"; };
 		DDA6FED022D839D100E88A9A /* Mobile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mobile.swift; sourceTree = "<group>"; };
+		DDA6FED722D843D500E88A9A /* CustomerTableCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				DDA6FEBB22D7F70F00E88A9A /* SplashViewController.swift */,
 				DDA6FEBF22D8072A00E88A9A /* BillListTableViewController.swift */,
 				DDA6FEC522D8154300E88A9A /* Users.plist */,
+				DDA6FED722D843D500E88A9A /* CustomerTableCellTableViewCell.swift */,
 			);
 			path = C0753140_MidTerm_MAD3115S2019;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA6FED822D843D500E88A9A /* CustomerTableCellTableViewCell.swift in Sources */,
 				DDA6FED122D839D100E88A9A /* Mobile.swift in Sources */,
 				DDA6FEBC22D7F70F00E88A9A /* SplashViewController.swift in Sources */,
 				DDA6FEC822D8387B00E88A9A /* Customer.swift in Sources */,

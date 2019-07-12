@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BillListTableViewController: UIViewController {
+class BillListTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     var customers = [Customer]()
     
@@ -20,26 +20,22 @@ class BillListTableViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
-}
-
-extension BillListTableViewController : UITableViewDataSource, UITableViewDelegate{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.customers.count
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(100)
     }
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.customers.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customerCell") as! StudentTableViewCell
-        let customer = self.customers[indexPath.row]
-        
-        cell.
-        cell.lblStudentId.text = "Student ID : \(stud.studentId)"
-        cell.lblStudentName.text = "Name : \(stud.studentName)"
-        cell.lblCity.text = "City : \(stud.city)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customerCell") as! CustomerTableCellTableViewCell
+        let customerData = self.customers[indexPath.row]
+        cell.lblCustomerName.text = "Customer ID : \(customerData.fullName)"
         
         return cell
     }
 
-
 }
+
 

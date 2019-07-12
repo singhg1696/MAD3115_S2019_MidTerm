@@ -69,8 +69,14 @@ class ViewController: UIViewController {
     {
         let s = storyboardSegue.source as! BillListTableViewController
         
-        txtPassword.text = ""
-        txtID.text = ""
+        if switchRememberMe.isOn{
+            
+        }
+        else{
+            txtPassword.text = ""
+             txtID.text = ""
+        }
+    
     }
     
     func readInformationPlist() {
