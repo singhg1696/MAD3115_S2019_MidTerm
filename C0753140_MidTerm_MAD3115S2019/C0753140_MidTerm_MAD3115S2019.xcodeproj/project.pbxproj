@@ -16,6 +16,7 @@
 		DDA6FEAE22D7F4A000E88A9A /* C0753140_MidTerm_MAD3115S2019UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FEAD22D7F4A000E88A9A /* C0753140_MidTerm_MAD3115S2019UITests.swift */; };
 		DDA6FEBC22D7F70F00E88A9A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FEBB22D7F70F00E88A9A /* SplashViewController.swift */; };
 		DDA6FEC022D8072A00E88A9A /* BillListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA6FEBF22D8072A00E88A9A /* BillListTableViewController.swift */; };
+		DDA6FEC222D8119400E88A9A /* UserInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDA6FEC122D8119400E88A9A /* UserInfo.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DDA6FEAF22D7F4A000E88A9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDA6FEBB22D7F70F00E88A9A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		DDA6FEBF22D8072A00E88A9A /* BillListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillListTableViewController.swift; sourceTree = "<group>"; };
+		DDA6FEC122D8119400E88A9A /* UserInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UserInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				DDA6FE9922D7F4A000E88A9A /* Info.plist */,
 				DDA6FEBB22D7F70F00E88A9A /* SplashViewController.swift */,
 				DDA6FEBF22D8072A00E88A9A /* BillListTableViewController.swift */,
+				DDA6FEC122D8119400E88A9A /* UserInfo.plist */,
 			);
 			path = C0753140_MidTerm_MAD3115S2019;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				DDA6FE9822D7F4A000E88A9A /* LaunchScreen.storyboard in Resources */,
 				DDA6FE9522D7F4A000E88A9A /* Assets.xcassets in Resources */,
 				DDA6FE9322D7F49E00E88A9A /* Main.storyboard in Resources */,
+				DDA6FEC222D8119400E88A9A /* UserInfo.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

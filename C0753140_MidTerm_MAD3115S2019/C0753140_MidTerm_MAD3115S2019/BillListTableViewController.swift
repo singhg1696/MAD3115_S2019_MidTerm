@@ -10,6 +10,7 @@ import UIKit
 
 class BillListTableViewController: UIViewController {
 
+    @IBOutlet weak var tblViewCustomers: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,3 +29,6 @@ class BillListTableViewController: UIViewController {
     */
 
 }
+
+extension
+
