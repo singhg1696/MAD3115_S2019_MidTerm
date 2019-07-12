@@ -66,7 +66,7 @@ class ViewController: UIViewController {
                         }
                         else
                         {
-                            let alert = UIAlertController(title: "Error", message: "Try again, User Email / Password Invalid", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "Error", message: "Invalid UserId or Password", preferredStyle: .alert)
                             
                             let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
                             
@@ -94,17 +94,17 @@ class ViewController: UIViewController {
     
     }
     
-    func readInformationPlist() {
-        if let bundlePath = Bundle.main.path(forResource: "Employee", ofType: "plist") {
-            _ = NSMutableDictionary(contentsOfFile: bundlePath)
-            
-            //print(dictionary!.description)
-            
-           
-        }
-   
-    
-    }
+//    func readInformationPlist() {
+//        if let bundlePath = Bundle.main.path(forResource: "Employee", ofType: "plist") {
+//            _ = NSMutableDictionary(contentsOfFile: bundlePath)
+//
+//            //print(dictionary!.description)
+//
+//
+//        }
+//
+//
+//    }
     
     
    
