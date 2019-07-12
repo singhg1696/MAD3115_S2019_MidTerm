@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtID: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        getRememberMeValues()
         // Do any additional setup after loading the view.
     }
     
@@ -33,41 +34,55 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func btnLoginPressed(_ sender: UIBarButtonItem) {
+    @IBAction func btnLoginPressed(_ sender: UIBarButtonItem)
+    {
         
-        if self.txtID.text == "admin@gmail.com" && self.txtPassword.text == "s3cr3t"
+        if let plist = Bundle.main.path(forResource: "Users", ofType: "plist")
         {
-            let userDefault = UserDefaults.standard
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let  userVC = sb.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
-            //             userVC.eMailId = txtTextField.text
-            self.present(userVC, animated: true, completion: nil)
-            if switchRememberMe.isOn
+            if let dict = NSDictionary(contentsOfFile: plist)
             {
-                
-                userDefault.setValue(txtID.text, forKey: "userEmail")
-                userDefault.set(txtPassword.text, forKey: "userPassword")
+                if let users = dict["Users"] as? [[String:Any]]
+                {
+                    for user in users
+                    {
+                        if ( (self.txtID.text == (user["email"] as! String)) && (self.txtPassword.text == (user["password"] as! String)) )
+                        {
+                            let userDefault = UserDefaults.standard
+                            let sb = UIStoryboard(name: "Main", bundle: nil)
+                            let  userVC = sb.instantiateViewController(withIdentifier: "BillListVC") as! BillListTableViewController
+                            //             userVC.eMailId = txtTextField.text
+                            self.present(userVC, animated: true, completion: nil)
+                            if switchRememberMe.isOn
+                            {
+                                
+                                userDefault.setValue(txtID.text, forKey: "userEmail")
+                                userDefault.set(txtPassword.text, forKey: "userPassword")
+                            }
+                            else
+                            {
+                                userDefault.removeObject(forKey: "userEmail")
+                                userDefault.removeObject(forKey: "userPassword")
+                            }
+                        }
+                        else
+                        {
+                            let alert = UIAlertController(title: "Error", message: "Try again, User Email / Password Invalid", preferredStyle: .alert)
+                            
+                            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                            
+                            alert.addAction(okButton)
+                            
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
             }
-            else
-            {
-                userDefault.removeObject(forKey: "userEmail")
-                userDefault.removeObject(forKey: "userPassword")
-            }
-        }
-        else
-        {
-            let alert = UIAlertController(title: "Error", message: "Try again, User Email / Password Invalid", preferredStyle: .alert)
-            
-            let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
-            
-            alert.addAction(okButton)
-            
-            self.present(alert, animated: true)
         }
     }
+
     @IBAction func unWindLogoutFromAnyScreen(storyboardSegue: UIStoryboardSegue)
     {
-        let s = storyboardSegue.source as! BillListTableViewController
+        _ = storyboardSegue.source as! BillListTableViewController
         
         if switchRememberMe.isOn{
             
@@ -81,12 +96,14 @@ class ViewController: UIViewController {
     
     func readInformationPlist() {
         if let bundlePath = Bundle.main.path(forResource: "Employee", ofType: "plist") {
-            let dictionary = NSMutableDictionary(contentsOfFile: bundlePath)
+            _ = NSMutableDictionary(contentsOfFile: bundlePath)
             
             //print(dictionary!.description)
             
            
         }
+   
+    
     }
     
     

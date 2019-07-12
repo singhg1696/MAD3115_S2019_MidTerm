@@ -3,11 +3,37 @@
 <plist version="1.0">
 <dict>
 	<key>Users</key>
-	<dict>
-		<key>Gurwinder@gmail.com</key>
-		<string>1234</string>
-        <key>Lovepreet@gmail.com</key>
-        <string>1234</string>
-	</dict>
+    <array>
+        <dict>
+            <key>email</key>
+            <string>gurwinder@gmail.com</string>
+            <key>password</key>
+            <string>guri@123</string>
+        </dict>
+        <dict>
+            <key>email</key>
+            <string>udhay@gmail.com</string>
+            <key>password</key>
+            <string>udhay@123</string>
+        </dict>
+        <dict>
+            <key>email</key>
+            <string>ujjwal@gmail.com</string>
+            <key>password</key>
+            <string>ujwal@123</string>
+        </dict>
+        <dict>
+            <key>email</key>
+            <string>hargun@gmail.com</string>
+            <key>password</key>
+            <string>hargun@123</string>
+        </dict>
+        <dict>
+            <key>email</key>
+            <string>aman@gmail.com</string>
+            <key>password</key>
+            <string>aman@123</string>
+        </dict>
+    </array>
 </dict>
 </plist>
